@@ -29,12 +29,9 @@ const FeaturedProducts = () => {
 
                     {result !== null && (
                         result.map((product: ProductType) => {
-                            // SOLUCIÓN AL ERROR: Usamos Optional Chaining (?.) en cada nivel
+                            // Strapi v5 entrega los datos directos, sin la capa "attributes"
                             const id = product.id;
-                            const attributes = product.attributes;
-                            
-                            // Extraemos la URL de forma segura sin romper el componente
-                            const imageUrl = attributes?.images?.data?.[0]?.attributes?.url;
+                            const imageUrl = product.images?.[0]?.url;
 
                             return (
                                 <CarouselItem key={id} className="md:basis-1/2 lg:basis-1/3 group">
@@ -44,7 +41,7 @@ const FeaturedProducts = () => {
                                                 {imageUrl ? (
                                                     <img 
                                                         src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${imageUrl}`} 
-                                                        alt={attributes?.productName || "Producto"}
+                                                        alt={product.productName || "Producto"}
                                                         className="rounded-lg object-contain h-[200px]" 
                                                     />
                                                 ) : (
@@ -70,8 +67,8 @@ const FeaturedProducts = () => {
                                         </Card>
                                         
                                         <div className="mt-4 text-center">
-                                            <p className="font-bold text-lg">{attributes?.productName}</p>
-                                            <p className="text-sm text-gray-500">${attributes?.price}</p>
+                                            <p className="font-bold text-lg">{product.productName}</p>
+                                            <p className="text-sm text-gray-500">${product.price}</p>
                                         </div>
                                     </div>
                                 </CarouselItem>
