@@ -13,9 +13,12 @@ import {
 import { Card, CardContent } from "./ui/card";
 import SkeletonSchema from "./skeletonSchema";
 import { Expand, ShoppingCart } from "lucide-react";
+import IconButton from "./icon-button"; 
+import { useRouter } from "next/navigation"; 
 
 const FeaturedProducts = () => {
     const { result, loading }: ResponseType = useGetFeaturedProducts();
+    const router = useRouter(); 
 
     return (
         <div className="max-w-6xl py-4 mx-auto sm:py-16 sm:px-24">
@@ -29,9 +32,9 @@ const FeaturedProducts = () => {
 
                     {result !== null && (
                         result.map((product: ProductType) => {
-                            // Strapi v5 entrega los datos directos, sin la capa "attributes"
                             const id = product.id;
                             const imageUrl = product.images?.[0]?.url;
+                            const slug = product.slug; 
 
                             return (
                                 <CarouselItem key={id} className="md:basis-1/2 lg:basis-1/3 group">
@@ -55,29 +58,54 @@ const FeaturedProducts = () => {
                                                 {/* Iconos de acción (Hover) */}
                                                 <div className="absolute w-full px-6 transition duration-200 opacity-0 group-hover:opacity-100 bottom-5">
                                                     <div className="flex justify-center gap-x-6">
-                                                        <button className="p-2 bg-white rounded-full text-black shadow-md hover:scale-110 transition">
-                                                            <Expand size={20} />
-                                                        </button>
-                                                        <button className="p-2 bg-white rounded-full text-black shadow-md hover:scale-110 transition">
-                                                            <ShoppingCart size={20} />
-                                                        </button>
+                                                        <IconButton 
+                                                            onClick={() => router.push(`product/${slug}`)} 
+                                                            icon={<Expand size={20} />} 
+                                                            className="text-gray-600"
+                                                        />
+                                                        <IconButton 
+                                                            onClick={() => console.log("Agregar al carrito")} 
+                                                            icon={<ShoppingCart size={20} />} 
+                                                            className="text-gray-600"
+                                                        />
                                                     </div>
                                                 </div>
                                             </CardContent>
+                                            
+                                            {/* Diseño de cápsulas (Badges) actualizado para Strapi v5 */}
+                                            <div className="flex justify-between gap-4 px-8 pb-4">
+                                                <h3 className="text-lg font-bold">{product.productName}</h3>
+                                                <div className="flex items-center justify-between gap-3 text-sm">
+                                                    
+                                                    {/* Cápsula de Categoría (Negra) */}
+                                                    {product.category && (
+                                                        <p className="px-2 py-1 text-white bg-black rounded-full dark:bg-white dark:text-black w-fit">
+                                                            {product.category.categoryName}
+                                                        </p>
+                                                    )}
+                                                    
+                                                    {/* Cápsula de Origen (Café) */}
+                                                    {product.origin && (
+                                                        <p className="px-2 py-1 text-white bg-yellow-900 rounded-full w-fit">
+                                                            {product.origin}
+                                                        </p>
+                                                    )}
+                                                    
+                                                </div>
+                                            </div>
+
                                         </Card>
-                                        
-                                        <div className="mt-4 text-center">
-                                            <p className="font-bold text-lg">{product.productName}</p>
-                                            <p className="text-sm text-gray-500">${product.price}</p>
-                                        </div>
                                     </div>
                                 </CarouselItem>
                             );
                         })
                     )}
                 </CarouselContent>
-                <CarouselPrevious />
-                <CarouselNext />
+                
+                {/* ¡AQUÍ ESTÁ LA CORRECCIÓN DE LAS FLECHAS! */}
+                <CarouselPrevious className="hidden sm:flex" />
+                <CarouselNext className="hidden sm:flex" />
+                
             </Carousel>
         </div>
     );

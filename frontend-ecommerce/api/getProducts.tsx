@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
-export function useGetFeaturedProducts() {
-    // 1. Cambiamos a createdAt:asc (Ordena desde el más viejo creado, que es tu café)
-    const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/products?filters[isFatured][$eq]=true&populate=*&sort=createdAt:asc`;
+export function useGetCategories() {
+    // Apuntamos a la ruta de categorías en Strapi
+    const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/categories?populate=*`;
     const [result, setResult] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
@@ -10,7 +10,7 @@ export function useGetFeaturedProducts() {
     useEffect(() => {
         (async () => {
             try {
-                // 2. Le agregamos { cache: "no-store" } para prohibirle a Next.js usar datos viejos
+                // Le agregamos el "no-store" para ganarle a la memoria caché de Next.js
                 const res = await fetch(url, { cache: "no-store" });
                 const json = await res.json();
                 setResult(json.data);
