@@ -8,8 +8,7 @@ const FiltersControlsCategory = (props: FiltersControlsCategoryProps) => {
     const { setFilterOrigin } = props
 
     return (
-        <div className="sm:w-[350px] sm:mt-5">
-            {/* Pasamos la función al siguiente nivel: el componente de los radios */}
+        <div className="sm:w-[350px] sm:mt-5 p-8">
             <FilterOrigin setFilterOrigin={setFilterOrigin} />
         </div>
     );
