@@ -16,7 +16,6 @@ export const useCart = create<CartStore>()(
             items: [],
             addItem: (data: ProductType) => {
                 const currentItems = get().items;
-                // Comparación robusta de IDs para Strapi
                 const existingItem = currentItems.find((item) => String(item.id) === String(data.id));
 
                 if (existingItem) {

@@ -9,7 +9,7 @@ import { Toaster } from 'sonner';
 const urbanist = Urbanist({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Café de Chiapas - Ecommerce",
+  title: "GlossDior - Ecommerce",
   description: "Mi tienda creada con Strapi y Next.js",
 };
 

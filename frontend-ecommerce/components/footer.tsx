@@ -31,7 +31,7 @@ const Footer = () => {
                 <div className="sm:flex sm:items-center sm:justify-between">
                     <p className="mb-4 sm:mb-0">
                         <span className="font-bold">
-                            Coffee
+                            RodLabiales
                         </span>
                         {" "}E-commerce
                     </p>
@@ -50,7 +50,7 @@ const Footer = () => {
                 <Separator className="my-6 border-gray-200 sm:mx-auto lg:my-8" />
                 
                 <span className="block text-sm text-gray-500 sm:text-center">
-                    © 2026 Coffee Store. Todos los derechos.
+                    © 2026 RodLabialesDior Store. Todos los derechos.
                 </span>
             </div>
         </footer>

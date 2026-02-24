@@ -28,7 +28,6 @@ const CartItem = ({ product }: CartItemProps) => {
             </div>
             <div className="flex justify-between flex-1 px-6">
                 
-                {/* 2A: TEXTOS Y BADGES */}
                 <div>
                     <h2 className="text-lg font-bold dark:text-white">
                         {product.productName}

@@ -23,7 +23,7 @@ const MenuList = () => {
           <NavigationMenuContent>
             <ul className="w-96">
               <ListItem href="/Shop" title="Tienda">
-                accede a toda la tienfa 
+                accede a toda la tienda 
               </ListItem>
               <ListItem href="Offers" title="Ofertas">
                 Las mejores ofertas de la tienda 
@@ -35,7 +35,7 @@ const MenuList = () => {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem className="hidden md:flex">
-          <NavigationMenuTrigger>Cafes</NavigationMenuTrigger>
+          <NavigationMenuTrigger>Productos de Belleza</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
               {components.map((component) => (

@@ -14,7 +14,7 @@ const Navbar = () => {
     return (
         <div className="flex items-center justify-between p-4 mx-auto border-b max-w-7xl">
             <h1 className="text-3xl cursor-pointer font-bold" onClick={() => router.push("/")}>
-                Coffee
+                LabialRod
             </h1>
 
             {/* MENÚ DESKTOP */}
