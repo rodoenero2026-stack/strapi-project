@@ -1,7 +1,10 @@
+"use client"
+import { useState, useEffect } from "react";
 import { ProductType } from "@/types/product"; 
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button"; 
 import { Heart } from "lucide-react"; 
+import { useLovedProducts } from "@/hooks/use-loved-products"; 
 
 interface InfoProductProps {
     product: ProductType;
@@ -9,13 +12,23 @@ interface InfoProductProps {
 
 const InfoProduct = (props: InfoProductProps) => {
     const { product } = props;
+    const { addLovedItem, lovedItems, removeLovedItem } = useLovedProducts();
+    const [isMounted, setIsMounted] = useState(false);
+
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
+
+    if (!isMounted) return null;
+
+    const isLoved = lovedItems.some(
+        (item: ProductType) => String(item.id) === String(product.id)
+    );
 
     return (
         <div className="px-6">
             <div className="justify-between mb-3 sm:flex">
-                {/* Título y Badges */}
                 <h1 className="text-2xl font-bold">{product.productName}</h1>
-
                 <div className="flex items-center justify-between gap-3">
                     <p className="px-2 py-1 text-xs text-white bg-black rounded-full dark:bg-white dark:text-black w-fit">
                         {product.teste}
@@ -27,32 +40,35 @@ const InfoProduct = (props: InfoProductProps) => {
             </div>
 
             <Separator className="my-4" />
-
-            <p className="text-gray-700 leading-relaxed">
-                {product.description}
-            </p>
-
+            <p className="text-gray-700 leading-relaxed">{product.description}</p>
             <Separator className="my-4" />
 
-            {/* Precio */}
             <p className="my-4 text-2xl text-black dark:text-white">
                 ${product.price}.00 MXN
             </p>
             
-            {/* CONTENEDOR FLEX: Botón + Corazón */}
             <div className="flex items-center gap-5 mt-6">
-                <Button 
-                    className="w-full bg-black text-white rounded-full dark:bg-white dark:text-black"
-                    onClick={() => console.log("Añadir al carrito")}
-                >
-                     Comprar
+                <Button className="w-full bg-black text-white rounded-full">
+                    Comprar
                 </Button>
                 
                 <Heart 
                     width={30} 
                     strokeWidth={1} 
-                    className="transition duration-300 cursor-pointer hover:fill-black dark:hover:fill-white shrink-0" 
-                    onClick={() => console.log("Añadir a favoritos")}
+                    className={`transition duration-300 cursor-pointer shrink-0 active:scale-90
+                        ${isLoved 
+                            ? 'fill-black text-black dark:fill-white dark:text-white' 
+                            : 'fill-none text-gray-500'
+                        } 
+                        hover:fill-black hover:text-black`} 
+                    onClick={(e) => {
+                        e.stopPropagation()
+                        if (isLoved) {
+                            removeLovedItem(product.id);
+                        } else {
+                            addLovedItem(product);
+                        }
+                    }}
                 />
             </div>
         </div>

@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { ThemeProvider } from "@/components/theme-provide"; 
+import { Toaster } from 'sonner'; 
 
 const urbanist = Urbanist({ subsets: ["latin"] });
 
@@ -27,6 +28,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
+          <Toaster richColors position="top-right" closeButton /> 
           {children}
           <Footer />
         </ThemeProvider>
