@@ -6,10 +6,12 @@ import MenuList from "./Menu-list";
 import ItemsMenuMobile from "./items-menu-mobile";
 import ToggleTheme from "./toggle-theme";
 import { useCart } from "@/hooks/use-cart";
+import { useLovedProducts } from "@/hooks/use-loved-products";
 
 const Navbar = () => {
     const router = useRouter();
     const cart = useCart();
+    const {lovedItems} = useLovedProducts()
 
     return (
         <div className="flex items-center justify-between p-4 mx-auto border-b max-w-7xl">
@@ -46,7 +48,7 @@ const Navbar = () => {
                 
                 <Heart 
     strokeWidth={1} 
-    className="cursor-pointer hover:text-primary" 
+    className={`cursor-pointer ${lovedItems.length > 0 ? 'fill-black dark:fill-white' : ''}`}
     onClick={() => router.push("/love-products")} 
 />
                 <User strokeWidth={1} className="cursor-pointer hover:text-primary" />

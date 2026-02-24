@@ -15,7 +15,7 @@ export const dataCarouselTop = [
     {
         id: 2,
         title: "Consigue hasta un -25% en compras superiores a 200mx",
-        description: "-20 % al gastar 100 € o -25 % al gastar 100mx. Usa el código",
+        description: "-20 % al gastar $200 o -25 % al gastar 100mx. Usa el código",
         link: "#",
     },
     {
