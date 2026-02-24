@@ -12,7 +12,7 @@ interface InfoProductProps {
 
 const InfoProduct = (props: InfoProductProps) => {
     const { product } = props;
-    const { addLovedItem, lovedItems, removeLovedItem } = useLovedProducts();
+    const { addLoveItem, lovedItems, removeLovedItem } = useLovedProducts();
     const [isMounted, setIsMounted] = useState(false);
 
     useEffect(() => {
@@ -66,7 +66,7 @@ const InfoProduct = (props: InfoProductProps) => {
                         if (isLoved) {
                             removeLovedItem(product.id);
                         } else {
-                            addLovedItem(product);
+                            addLoveItem(product);
                         }
                     }}
                 />

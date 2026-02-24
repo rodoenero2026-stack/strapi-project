@@ -42,9 +42,13 @@ const Navbar = () => {
                     </div>
                 )}
 
-                {/* EL CARRITO EXTRA ESTABA AQUÍ ABAJO Y YA LO BORRÉ */}
 
-                <Heart strokeWidth={1} className="cursor-pointer hover:text-primary" />
+                
+                <Heart 
+    strokeWidth={1} 
+    className="cursor-pointer hover:text-primary" 
+    onClick={() => router.push("/love-products")} 
+/>
                 <User strokeWidth={1} className="cursor-pointer hover:text-primary" />
                 <ToggleTheme/>
             </div>
