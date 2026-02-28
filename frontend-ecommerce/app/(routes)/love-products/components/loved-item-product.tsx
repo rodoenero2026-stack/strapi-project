@@ -1,15 +1,14 @@
 "use client"
-/* eslint-disable @next/next/no-img-element */
+
 import { useCart } from "@/hooks/use-cart";
 import { useLovedProducts } from "@/hooks/use-loved-products";
 import { ProductType } from "@/types/product";
-import { useRouter } from "next/navigation";
 import { formatPrice } from "@/lib/formatPrice";
 import { X, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-// IMPORTAMOS TU NUEVO COMPONENTE AQUÍ ARRIBA
 import ProductTasteOrigin from "@/components/shared/product-taste-origin"; 
+import ProductImageMiniature from "@/components/shared/product-image-miniature";
 
 interface LovedItemProductProps {
     product: ProductType;
@@ -17,7 +16,6 @@ interface LovedItemProductProps {
 
 const LovedItemProduct = (props: LovedItemProductProps) => {
     const { product } = props;
-    const router = useRouter();
     const { removeLovedItem } = useLovedProducts();
     const { addItem } = useCart();
 
@@ -27,17 +25,9 @@ const LovedItemProduct = (props: LovedItemProductProps) => {
 
     return (
         <li className="flex py-6 border-b">
-            {/* IMAGEN */}
-           <div 
-    onClick={() => router.push(`/product/${product.slug}`)} 
-    className="cursor-pointer flex-shrink-0"
->
-    <img 
-        src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${product.images?.[0]?.url}`} 
-        alt={product.productName} 
-        className="w-24 h-24 overflow-hidden rounded-md sm:w-auto sm:h-32 object-cover" 
-    />
-</div>
+            
+            {/* 1. MINIATURA REFACTORIZADA (Controla la imagen y el link al producto) */}
+            <ProductImageMiniature product={product} />
             
             {/* CONTENIDO Y BOTONES */}
             <div className="flex justify-between flex-1 px-6">
@@ -49,7 +39,7 @@ const LovedItemProduct = (props: LovedItemProductProps) => {
                         {formatPrice(product.price)}
                     </p>
                     
-                    {/* LA LÍNEA MÁGICA DEL TUTORIAL */}
+                    {/* 2. ETIQUETAS REFACTORIZADAS */}
                     <ProductTasteOrigin 
                         taste={product.category?.categoryName || ""} 
                         origin={product.origin || ""} 
@@ -64,7 +54,7 @@ const LovedItemProduct = (props: LovedItemProductProps) => {
                     </div>
                 </div>
 
-                {/* BOTÓN X PARA ELIMINAR */}
+                {/* BOTÓN X PARA ELIMINAR DE FAVORITOS */}
                 <div>
                     <button 
                         onClick={() => removeLovedItem(product.id)}

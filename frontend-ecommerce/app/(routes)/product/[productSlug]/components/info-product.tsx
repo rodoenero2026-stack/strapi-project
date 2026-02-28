@@ -6,6 +6,9 @@ import { Button } from "@/components/ui/button";
 import { Heart } from "lucide-react"; 
 import { useLovedProducts } from "@/hooks/use-loved-products"; 
 
+// 1. IMPORTAMOS TU COMPONENTE
+import ProductTasteOrigin from "@/components/shared/product-taste-origin";
+
 interface InfoProductProps {
     product: ProductType;
 }
@@ -29,14 +32,12 @@ const InfoProduct = (props: InfoProductProps) => {
         <div className="px-6">
             <div className="justify-between mb-3 sm:flex">
                 <h1 className="text-2xl font-bold">{product.productName}</h1>
-                <div className="flex items-center justify-between gap-3">
-                    <p className="px-2 py-1 text-xs text-white bg-black rounded-full dark:bg-white dark:text-black w-fit">
-                        {product.teste}
-                    </p>
-                    <p className="px-2 py-1 text-xs text-white bg-yellow-900 rounded-full w-fit">
-                        {product.origin}
-                    </p>
-                </div>
+                
+                {/* 2. REEMPLAZAMOS EL CÓDIGO VIEJO POR TU COMPONENTE LIMPIO */}
+                <ProductTasteOrigin 
+                    taste={product.teste || ""} 
+                    origin={product.origin || ""} 
+                />
             </div>
 
             <Separator className="my-4" />
