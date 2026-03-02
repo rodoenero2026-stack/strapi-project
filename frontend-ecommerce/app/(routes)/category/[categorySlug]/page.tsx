@@ -31,7 +31,7 @@ export default function Page() {
         <div className="max-w-6xl py-4 mx-auto sm:py-16 sm:px-24">
             {result !== null && !loading && (
                 <h1 className="text-3xl font-medium capitalize">
-                    Café {result[0].category.categoryName}
+                    productos exclusivos {result[0].category.categoryName}
                 </h1>
             )}
             <Separator className="my-4" />

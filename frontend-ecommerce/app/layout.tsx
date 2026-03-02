@@ -5,6 +5,7 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { ThemeProvider } from "@/components/theme-provide"; 
 import { Toaster } from 'sonner'; 
+import { LoaderProvider } from "@/components/loader-provider"; // Importa el que creamos
 
 const urbanist = Urbanist({ subsets: ["latin"] });
 
@@ -21,6 +22,9 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning>
       <body className={urbanist.className}>
+        {/* Este es el que dispara la rayita */}
+        <LoaderProvider /> 
+        
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
