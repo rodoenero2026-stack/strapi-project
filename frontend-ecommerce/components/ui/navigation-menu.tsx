@@ -99,6 +99,7 @@ function NavigationMenuContent({
   )
 }
 
+// --- ESTA ES LA SECCIÓN QUE CAMBIÓ PARA ARREGLAR EL MODO OSCURO ---
 function NavigationMenuViewport({
   className,
   ...props
@@ -112,7 +113,10 @@ function NavigationMenuViewport({
       <NavigationMenuPrimitive.Viewport
         data-slot="navigation-menu-viewport"
         className={cn(
-          "origin-top-center bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-md border shadow md:w-[var(--radix-navigation-menu-viewport-width)]",
+          "origin-top-center relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-md border shadow md:w-[var(--radix-navigation-menu-viewport-width)]",
+          "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90",
+          // AQUÍ ESTÁ EL FIX: Forzamos bg-white y bg-slate-950
+          "bg-white text-slate-900 dark:bg-slate-950 dark:border-slate-800 dark:text-slate-100",
           className
         )}
         {...props}

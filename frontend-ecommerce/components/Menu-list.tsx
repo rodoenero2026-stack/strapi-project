@@ -2,6 +2,8 @@
 
 import * as React from "react"
 import Link from "next/link"
+import { BookOpen, HelpCircle, Info, ShieldCheck, MessageSquareHeart, Sparkles } from "lucide-react"
+
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -11,109 +13,105 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
-
-
+import { cn } from "@/lib/utils"
 
 const MenuList = () => {
   return (
     <NavigationMenu>
-      <NavigationMenuList>
+      <NavigationMenuList className="flex items-center gap-2">
+        
+        {/* CONÓCENOS */}
         <NavigationMenuItem>
-          <NavigationMenuTrigger>sobre nosotros</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="bg-transparent hover:bg-pink-50 dark:hover:bg-pink-900/30 transition-colors">
+            Conócenos
+          </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="w-96">
-              <ListItem href="/Shop" title="Tienda">
-                accede a toda la tienda 
-              </ListItem>
-              <ListItem href="Offers" title="Ofertas">
-                Las mejores ofertas de la tienda 
-              </ListItem>
-              <ListItem href="href" title="Accesorios">
-                todo lo que buscas 
-              </ListItem>
+            <ul className="grid w-[280px] gap-1 p-3 border-t-2 border-pink-500">
+              <ListItem href="/nosotros" title="Nosotros" icon={<Info className="w-4 h-4 text-pink-500" />} />
+              <ListItem href="/testimonios" title="Testimonios" icon={<MessageSquareHeart className="w-4 h-4 text-pink-500" />} />
+              <ListItem href="/garantia" title="Garantía" icon={<ShieldCheck className="w-4 h-4 text-pink-500" />} />
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
+
+        {/* CATEGORÍAS */}
         <NavigationMenuItem className="hidden md:flex">
-          <NavigationMenuTrigger>Productos de Belleza</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="bg-transparent hover:bg-pink-50 dark:hover:bg-pink-900/30 transition-colors">
+            Categorías
+          </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-              {components.map((component) => (
-                <ListItem
-                  key={component.title}
-                  title={component.title}
-                  href={component.href}
-                >
-                  {component.description}
-                </ListItem>
-              ))}
-            </ul>
+            <div className="w-[450px] p-5 border-t-2 border-pink-500">
+              <div className="flex items-center gap-2 mb-4 text-pink-600 dark:text-pink-400 font-bold text-xs uppercase tracking-widest border-b border-gray-100 dark:border-slate-800 pb-2">
+                <Sparkles className="w-4 h-4" /> Selección LabialRod
+              </div>
+              <ul className="grid grid-cols-2 gap-x-6 gap-y-2">
+                {components.map((component) => (
+                  <ListItem
+                    key={component.title}
+                    title={component.title}
+                    href={component.href}
+                  />
+                ))}
+              </ul>
+            </div>
           </NavigationMenuContent>
         </NavigationMenuItem>
+
+        {/* BLOG - CORREGIDO SIN LEGACYBEHAVIOR */}
         <NavigationMenuItem>
-          <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-            <Link href="/Accesorios">Accesorios</Link>
+          <NavigationMenuLink asChild>
+            <Link href="/blog" className={cn(
+              navigationMenuTriggerStyle(), 
+              "text-pink-600 dark:text-pink-400 font-bold hover:bg-pink-50 dark:hover:bg-pink-900/30 transition-all flex items-center gap-2 bg-transparent cursor-pointer"
+            )}>
+              <BookOpen className="w-4 h-4" />
+              Blog
+            </Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
+
+        {/* FAQ - CORREGIDO SIN LEGACYBEHAVIOR */}
+        <NavigationMenuItem>
+          <NavigationMenuLink asChild>
+            <Link href="/faq" className={cn(
+              navigationMenuTriggerStyle(), 
+              "flex items-center gap-2 text-gray-600 dark:text-slate-300 hover:text-pink-600 dark:hover:text-pink-400 bg-transparent cursor-pointer"
+            )}>
+              <HelpCircle className="w-4 h-4" />
+              FAQ
+            </Link>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+
       </NavigationMenuList>
     </NavigationMenu>
   )
 }
 
-export default MenuList
-
-const components: { title: string; href: string; description: string }[] = [
- {
-    title: "Café en Grano",
-    href: "/category/grano",
-    description:
-      "Granos selectos de las mejores fincas de Chiapas, tostados a la perfección para resaltar su aroma.",
-  },
-  {
-    title: "Café Molido",
-    href: "/category/molido",
-    description:
-      "La molienda ideal para tu método de extracción favorito, desde prensa francesa hasta espresso.",
-  },
-  {
-    title: "Cápsulas",
-    href: "/category/capsulas",
-    description:
-      "Toda la intensidad y sabor de nuestro café premium en un formato rápido y sencillo.",
-  },
-  {
-    title: "Accesorios",
-    href: "/category/accesorios",
-    description: "Molinos, prensas y tazas diseñadas para elevar tu experiencia cafetera cada mañana.",
-  },
-  {
-    title: "Kits de Regalo",
-    href: "/category/regalos",
-    description:
-      "Selecciones especiales para compartir la pasión por el café con tus personas favoritas.",
-  },
-  {
-    title: "Suscripciones",
-    href: "/category/suscripciones",
-    description:
-      "Recibe tu café fresco automáticamente en la puerta de tu casa cada mes sin complicaciones.",
-  },
+const components = [
+  { title: "Labiales", href: "/category/labiales" },
+  { title: "Cremas", href: "/category/cremas" },
+  { title: "Gloss", href: "/category/gloss" },
+  { title: "Kits de Regalo", href: "/category/regalos" },
+  { title: "Accesorios", href: "/category/accesorios" },
+  { title: "Suscripciones", href: "/category/suscripciones" },
 ]
 
-
-function ListItem({
-  title,
-  children,
-  href,
-  ...props
-}: React.ComponentPropsWithoutRef<"li"> & { href: string }) {
+function ListItem({ className, title, href, icon, ...props }: any) {
   return (
-    <li {...props}>
+    <li>
       <NavigationMenuLink asChild>
-        <Link href={href}>
-          <div className="flex flex-col gap-1 text-sm">
-            <div className="leading-none font-medium">{title}</div>
-            <div className="text-muted-foreground line-clamp-2">{children}</div>
+        <Link
+          href={href}
+          className={cn(
+            "flex items-center gap-3 select-none rounded-lg p-3 leading-none no-underline outline-none transition-all hover:bg-pink-50 dark:hover:bg-pink-900/30 group",
+            className
+          )}
+          {...props}
+        >
+          {icon && <span className="group-hover:scale-110 transition-transform">{icon}</span>}
+          <div className="text-sm font-medium leading-none text-gray-900 dark:text-slate-100 group-hover:text-pink-600 dark:group-hover:text-pink-400">
+            {title}
           </div>
         </Link>
       </NavigationMenuLink>
@@ -121,3 +119,4 @@ function ListItem({
   )
 }
 
+export default MenuList
