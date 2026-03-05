@@ -17,7 +17,7 @@ const ProductImageMiniature = (props: ProductImageMiniatureProps) => {
             className="cursor-pointer group relative"
         >
             <img 
-                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${product.images?.[0]?.url}`} 
+                src={`${product.images?.[0]?.url}`} 
                 alt={product.productName} 
                 className="w-24 h-24 overflow-hidden rounded-md sm:w-auto sm:h-32 object-cover transition duration-300 group-hover:opacity-80 group-hover:scale-105" 
             />

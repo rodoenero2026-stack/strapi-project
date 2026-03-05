@@ -43,7 +43,7 @@ const FeaturedProducts = () => {
                                             <CardContent className="relative flex items-center justify-center px-6 py-2">
                                                 {imageUrl ? (
                                                     <img 
-                                                        src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${imageUrl}`} 
+                                                        src={`${imageUrl}`} 
                                                         alt={productName || "Producto"}
                                                         className="rounded-lg object-contain h-[200px]" 
                                                     />
