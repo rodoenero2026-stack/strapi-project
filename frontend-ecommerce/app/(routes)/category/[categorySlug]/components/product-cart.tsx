@@ -46,8 +46,8 @@ const ProductCard = (props: ProductCardProps) => {
                                     className="rounded-xl w-full h-[200px] object-cover"
                                 />
                             
-                                
-                                <div className="absolute inset-x-0 bottom-5 flex justify-center gap-x-6 px-4 transition duration-300 opacity-0 group-hover:opacity-100">
+                                {/* MAGIA MÓVIL AQUÍ */}
+                                <div className="absolute inset-x-0 bottom-5 flex justify-center gap-x-6 px-4 transition duration-300 opacity-100 md:opacity-0 group-hover:opacity-100">
                                     
                                     {/* ESCUDO INVISIBLE: Atrapa el clic y evita el error de TypeScript */}
                                     <div onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}>
