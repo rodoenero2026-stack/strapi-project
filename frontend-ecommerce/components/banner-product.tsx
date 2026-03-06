@@ -13,7 +13,7 @@ const BannerProduct = () => {
             
             <div 
                 className="h-[400px] lg:h-[800px] bg-center bg-no-repeat bg-contain mt-5 w-full" 
-                style={{ backgroundImage: "url('/dior1.jpg')" }}
+                style={{ backgroundImage: "url('/Dior1.jpg')" }}
             />
         </>
     );
