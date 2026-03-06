@@ -45,7 +45,7 @@ export default async function BlogPage() {
               <div className="relative h-60 overflow-hidden bg-gray-100">
                   <img 
                     src={post.image?.url 
-                      ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${post.image.url}`
+                      ? `${post.image.url}`
                       : "https://via.placeholder.com/400x300?text=Sin+Imagen"} 
                     alt={post.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"

@@ -41,7 +41,7 @@ const ProductCard = (props: ProductCardProps) => {
                             {/* CAJA AISLADA: Aquí aseguramos que el centrado sea perfecto */}
                             <div className="relative group w-full h-full">
                                 <img 
-                                    src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${image.url}`} 
+                                    src={`${image.url}`} 
                                     alt={product.productName} 
                                     className="rounded-xl w-full h-[200px] object-cover"
                                 />
