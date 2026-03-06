@@ -26,10 +26,11 @@ const MenuList = () => {
             Conócenos
           </NavigationMenuTrigger>
           <NavigationMenuContent>
+            {/* Aquí faltaba agrupar los ListItem correctamente */}
             <ul className="grid w-[280px] gap-1 p-3 border-t-2 border-pink-500">
-              <ListItem href="/nosotros" title="Nosotros" icon={<Info className="w-4 h-4 text-pink-500" />} />
-              <ListItem href="/testimonios" title="Testimonios" icon={<MessageSquareHeart className="w-4 h-4 text-pink-500" />} />
-              <ListItem href="/garantia" title="Garantía" icon={<ShieldCheck className="w-4 h-4 text-pink-500" />} />
+              <ListItem href="#" title="Nosotros" icon={<Info className="w-4 h-4 text-pink-500" />} />
+              <ListItem href="#" title="Testimonios" icon={<MessageSquareHeart className="w-4 h-4 text-pink-500" />} />
+              <ListItem href="#" title="Garantía" icon={<ShieldCheck className="w-4 h-4 text-pink-500" />} />
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
@@ -88,13 +89,11 @@ const MenuList = () => {
   )
 }
 
+// ⚠️ AQUÍ AJUSTAMOS LAS RUTAS A TUS CATEGORÍAS REALES EN STRAPI
 const components = [
-  { title: "Labiales", href: "/category/labiales" },
-  { title: "Cremas", href: "/category/cremas" },
-  { title: "Gloss", href: "/category/gloss" },
-  { title: "Kits de Regalo", href: "/category/regalos" },
-  { title: "Accesorios", href: "/category/accesorios" },
-  { title: "Suscripciones", href: "/category/suscripciones" },
+  { title: "Productos Exclusivos", href: "/category/productos-exclusivos" },
+  { title: "Productos Principales", href: "/category/productos-principales" },
+  { title: "Productos Premium", href: "/category/productos-premium" },
 ]
 
 function ListItem({ className, title, href, icon, ...props }: any) {
