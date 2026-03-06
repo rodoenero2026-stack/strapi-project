@@ -26,11 +26,11 @@ const MenuList = () => {
             Conócenos
           </NavigationMenuTrigger>
           <NavigationMenuContent>
-            {/* Aquí faltaba agrupar los ListItem correctamente */}
             <ul className="grid w-[280px] gap-1 p-3 border-t-2 border-pink-500">
-              <ListItem href="#" title="Nosotros" icon={<Info className="w-4 h-4 text-pink-500" />} />
-              <ListItem href="#" title="Testimonios" icon={<MessageSquareHeart className="w-4 h-4 text-pink-500" />} />
-              <ListItem href="#" title="Garantía" icon={<ShieldCheck className="w-4 h-4 text-pink-500" />} />
+              {/* Ya tienen sus enlaces reales. Te darán error 404 hasta que crees sus páginas como hicimos con FAQ */}
+              <ListItem href="/nosotros" title="Nosotros" icon={<Info className="w-4 h-4 text-pink-500" />} />
+              <ListItem href="/testimonios" title="Testimonios" icon={<MessageSquareHeart className="w-4 h-4 text-pink-500" />} />
+              <ListItem href="/garantia" title="Garantía" icon={<ShieldCheck className="w-4 h-4 text-pink-500" />} />
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
@@ -58,7 +58,7 @@ const MenuList = () => {
           </NavigationMenuContent>
         </NavigationMenuItem>
 
-        {/* BLOG - CORREGIDO SIN LEGACYBEHAVIOR */}
+        {/* BLOG */}
         <NavigationMenuItem>
           <NavigationMenuLink asChild>
             <Link href="/blog" className={cn(
@@ -71,7 +71,7 @@ const MenuList = () => {
           </NavigationMenuLink>
         </NavigationMenuItem>
 
-        {/* FAQ - CORREGIDO SIN LEGACYBEHAVIOR */}
+        {/* FAQ */}
         <NavigationMenuItem>
           <NavigationMenuLink asChild>
             <Link href="/faq" className={cn(
@@ -89,7 +89,7 @@ const MenuList = () => {
   )
 }
 
-// ⚠️ AQUÍ AJUSTAMOS LAS RUTAS A TUS CATEGORÍAS REALES EN STRAPI
+// ⚠️ AQUÍ ESTÁN TUS CATEGORÍAS REALES PARA QUE EL MENÚ SE ACTUALICE
 const components = [
   { title: "Productos Exclusivos", href: "/category/productos-exclusivos" },
   { title: "Productos Principales", href: "/category/productos-principales" },
