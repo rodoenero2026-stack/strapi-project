@@ -8,10 +8,11 @@ const ItemsMenuMobile = () => {
             <PopoverTrigger>
                 <Menu />
             </PopoverTrigger>
-            <PopoverContent>
-                <Link href="/categories" className="block">GlossDior</Link>
-                <Link href="/categories" className="block">GlossCr</Link>
-                <Link href="/categories" className="block">Glossdod</Link>
+            <PopoverContent className="flex flex-col gap-4 p-4">
+                <Link href="#" className="block hover:text-pink-600 transition">Conócenos</Link>
+                <Link href="#" className="block hover:text-pink-600 transition">Categorías</Link>
+                <Link href="/blog" className="block hover:text-pink-600 transition">Blog</Link>
+                <Link href="/faq" className="block hover:text-pink-600 transition">FAQ</Link>
             </PopoverContent>
         </Popover>
     );
